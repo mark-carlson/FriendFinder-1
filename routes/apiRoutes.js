@@ -35,7 +35,7 @@ module.exports = function(app) {
       // Compute differenes for each question
       var diff = 0;
       for (var j = 0; j < userResponses.length; j++) {
-        console.log('friends', friends[i]);
+        //console.log('friends', friends[i]);
         diff += Math.abs(friends[i].scores[j] - userResponses[j]);
       }
 
