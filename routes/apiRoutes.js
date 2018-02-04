@@ -17,11 +17,11 @@ module.exports = function(app) {
   app.post('/friends', function(req, res) {
     // Capture the user input object
     var userInput = req.body;
+    userInput['scores'] = userInput['scores[]'];
     console.log('userInput = ' + JSON.stringify(userInput));
     friends.push(userInput);
 
     var userResponses = userInput.scores;
-    // console.log('userResponses = ' + userResponses);
 
     // Compute best friend match
     var matchName = '';
@@ -30,11 +30,12 @@ module.exports = function(app) {
 
     // Examine all existing friends in the list
     for (var i = 0; i < friends.length; i++) {
-      // console.log('friend = ' + JSON.stringify(friends[i]));
+      //console.log('friend = ' + JSON.stringify(friends[i]));
 
       // Compute differenes for each question
       var diff = 0;
       for (var j = 0; j < userResponses.length; j++) {
+        console.log('friends', friends[i]);
         diff += Math.abs(friends[i].scores[j] - userResponses[j]);
       }
 
