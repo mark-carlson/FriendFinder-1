@@ -18,6 +18,7 @@ module.exports = function(app) {
     // Capture the user input object
     var userInput = req.body;
     userInput['scores'] = userInput['scores[]'];
+    delete userInput['scores[]'];
     console.log('userInput = ' + JSON.stringify(userInput));
     friends.push(userInput);
 
